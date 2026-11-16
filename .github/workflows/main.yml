@@ -5,7 +5,7 @@ on:
     branches: [ "main", "master" ]
   pull_request:
     branches: [ "main", "master" ]
-  workflow_dispatch: # 允许你手动在网页上一键点击触发编译
+  workflow_dispatch:
 
 jobs:
   build:
@@ -20,6 +20,9 @@ jobs:
       with:
         distribution: 'temurin'
         java-version: '17'
+
+    - name: Generate Gradle Wrapper
+      run: gradle wrapper
 
     - name: Grant execute permission for gradlew
       run: chmod +x gradlew
